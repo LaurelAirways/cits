@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Institute of Technology and Sciences</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .question {
+            margin: 15px 0;
+        }
+        #result {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function calculateScore() {
+            const correctAnswers = {
+                q1: 'a', q2: 'a', q3: 'b', q4: 'a', q5: 'c',
+                q6: 'a', q7: 'd', q8: 'b', q9: 'c', q10: 'a',
+                q11: 'a', q12: 'b', q13: 'a', q14: 'd', q15: 'b',
+                q16: 'a', q17: 'c', q18: 'b', q19: 'b', q20: 'a',
+                q21: '3', q22: '2', q23: '4', q24: '3', q25: '3'
+            };
+
+            let score = 0;
+            let correctCount = 0;
+            let incorrectCount = 0;
+            const solutionKey = document.getElementById('solution-key');
+            solutionKey.innerHTML = '';  // Clear previous solutions
+
+            for (let i = 1; i <= 25; i++) {
+                const userAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+                let answerText = '';
+
+                if (userAnswer) {
+                    answerText = userAnswer.value;
+                    if (answerText === correctAnswers[`q${i}`]) {
+                        score += 4;
+                        correctCount++;
+                    } else {
+                        score -= 1;
+                        incorrectCount++;
+                    }
+                }
+
+                const li = document.createElement('li');
+                li.textContent = `Q${i}: Your answer = ${answerText} | Correct answer = ${correctAnswers[`q${i}`]}`;
+                solutionKey.appendChild(li);
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            const scoreDiv = document.getElementById('score');
+            scoreDiv.innerHTML = `<h3>Your Score: ${score}</h3>`;
+            const analysisDiv = document.getElementById('analysis');
+            analysisDiv.innerHTML = `<p>Correct Answers: ${correctCount}</p><p>Incorrect Answers: ${incorrectCount}</p>`;
+
+            return false; // Prevent form submission
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>JEE Main Level Chemistry Exam - Coordination Compounds</h1>
+        <p>Time left: <span id="timer">60:00</span> minutes</p>
+
+        <form id="exam-form" onsubmit="return calculateScore()">
+            <h2>Multiple Choice Questions (MCQs)</h2>
+
+            <div class="question">
+                <label for="q1">1. Which of the following statements about Werner’s theory is incorrect?</label>
+                <input type="radio" name="q1" value="a"> a) The central metal ion forms two types of coordination: primary and secondary<br>
+                <input type="radio" name="q1" value="b"> b) Ligands can coordinate to the metal ion in various ways<br>
+                <input type="radio" name="q1" value="c"> c) The coordination number is always 4 or 6 in Werner’s theory<br>
+                <input type="radio" name="q1" value="d"> d) The ligands in Werner’s theory are always neutral<br>
+            </div>
+
+            <div class="question">
+                <label for="q2">2. Which of the following is an example of a bidentate ligand?</label>
+                <input type="radio" name="q2" value="a"> a) Ethylenediamine<br>
+                <input type="radio" name="q2" value="b"> b) Ammonia<br>
+                <input type="radio" name="q2" value="c"> c) Chloride ion<br>
+                <input type="radio" name="q2" value="d"> d) Water molecule<br>
+            </div>
+
+            <div class="question">
+                <label for="q3">3. What is the coordination number of [Ni(CO)₄]?</label>
+                <input type="radio" name="q3" value="a"> a) 2<br>
+                <input type="radio" name="q3" value="b"> b) 4<br>
+                <input type="radio" name="q3" value="c"> c) 6<br>
+                <input type="radio" name="q3" value="d"> d) 3<br>
+            </div>
+
+            <div class="question">
+                <label for="q4">4. What is the geometry of the [CuCl₄]²⁻ complex?</label>
+                <input type="radio" name="q4" value="a"> a) Tetrahedral<br>
+                <input type="radio" name="q4" value="b"> b) Square planar<br>
+                <input type="radio" name="q4" value="c"> c) Octahedral<br>
+                <input type="radio" name="q4" value="d"> d) Linear<br>
+            </div>
+
+            <div class="question">
+                <label for="q5">5. Which of the following ligands can form chelate complexes?</label>
+                <input type="radio" name="q5" value="a"> a) Ammonia<br>
+                <input type="radio" name="q5" value="b"> b) Ethylenediamine<br>
+                <input type="radio" name="q5" value="c"> c) Water<br>
+                <input type="radio" name="q5" value="d"> d) Chloride ion<br>
+            </div>
+
+            <div class="question">
+                <label for="q6">6. Which is an example of a linkage isomerism?</label>
+                <input type="radio" name="q6" value="a"> a) [Co(NH₃)₆]³⁺<br>
+                <input type="radio" name="q6" value="b"> b) [Ni(CO)₄]<br>
+                <input type="radio" name="q6" value="c"> c) [Ni(NH₃)₆]²⁺<br>
+                <input type="radio" name="q6" value="d"> d) [CrCl₆]³⁻<br>
+            </div>
+
+            <div class="question">
+                <label for="q7">7. Which of the following compounds exhibits both geometrical and optical isomerism?</label>
+                <input type="radio" name="q7" value="a"> a) [Cr(H₂O)₆]³⁺<br>
+                <input type="radio" name="q7" value="b"> b) [Ni(CO)₄]<br>
+                <input type="radio" name="q7" value="c"> c) [PtCl₂(NH₃)₂]<br>
+                <input type="radio" name="q7" value="d"> d) [CuCl₄]²⁻<br>
+            </div>
+
+            <div class="question">
+                <label for="q8">8. What is the color of the [Cr(NH₃)₆]³⁺ complex?</label>
+                <input type="radio" name="q8" value="a"> a) Red<br>
+                <input type="radio" name="q8" value="b"> b) Green<br>
+                <input type="radio" name="q8" value="c"> c) Blue<br>
+                <input type="radio" name="q8" value="d"> d) Yellow<br>
+            </div>
+
+            <div class="question">
+                <label for="q9">9. The geometry of [CuCl₄]²⁻ is:</label>
+                <input type="radio" name="q9" value="a"> a) Square planar<br>
+                <input type="radio" name="q9" value="b"> b) Tetrahedral<br>
+                <input type="radio" name="q9" value="c"> c) Octahedral<br>
+                <input type="radio" name="q9" value="d"> d) Linear<br>
+            </div>
+
+            <div class="question">
+                <label for="q10">10. Which of the following ions is paramagnetic?</label>
+                <input type="radio" name="q10" value="a"> a) [Cu(H₂O)₆]²⁺<br>
+                <input type="radio" name="q10" value="b"> b) [Fe(CO)₅]<br>
+                <input type="radio" name="q10" value="c"> c) [Ni(CO)₄]<br>
+                <input type="radio" name="q10" value="d"> d) [Cr(H₂O)₆]³⁺<br>
+            </div>
+
+            <!-- Continue adding other questions (q11 to q20) similarly -->
+
+            <h2>Numerical Questions</h2>
+            <div class="question">
+                <label for="q21">21. Calculate the oxidation number of Cr in [Cr(H₂O)₆]³⁺.</label>
+                <input type="number" name="q21">
+            </div>
+
+            <div class="question">
+                <label for="q22">22. The complex [Cu(NH₃)₄]²⁺ has how many unpaired electrons?</label>
+                <input type="number" name="q22">
+            </div>
+
+            <div class="question">
+                <label for="q23">23. Calculate the number of isomers for [CrCl₄(NH₃)₂].</label>
+                <input type="number" name="q23">
+            </div>
+
+            <div class="question">
+                <label for="q24">24. The complex [NiCl₄]²⁻ shows what type of isomerism?</label>
+                <input type="number" name="q24">
+            </div>
+
+            <div class="question">
+                <label for="q25">25. Calculate the number of unpaired electrons in [Fe(CO)₅].</label>
+                <input type="number" name="q25">
+            </div>
+
+            <div class="question">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="result">
+        <h2>Result and Detailed Analysis</h2>
+        <div id="score"></div>
+        <div id="analysis"></div>
+        <h3>Solution Key:</h3>
+        <ul id="solution-key"></ul>
+    </div>
+</body>
+</html>
